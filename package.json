@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/somastash/code_architect#readme",
   "devDependencies": {
-    "@marp-team/marp-cli": "^2.2.2",
+    "@marp-team/marp-cli": "^3.4.0",
     "less": "^4.4.1"
   }
 }
