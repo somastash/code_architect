@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "name": "code_architect",
+  "version": "1.0.0",
+  "scripts": {
+    "build_theme": "lessc .theme/style.less .theme/style.css",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build_theme": {
+      "patterns": [
+        ".theme/**/*"
+      ],
+      "extensions": "less",
+      "delay": 100,
+      "inherit": true
+    }
+  },
+  "marp": {
+    "html": true,
+    "lang": "ja",
+    "themeSet": ".theme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somastash/code_architect.git"
+  },
+  "author": "Satoshi Soma (https://github.com/somastash)",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/somastash/code_architect/issues"
+  },
+  "homepage": "https://github.com/somastash/code_architect#readme",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^2.2.2",
+    "less": "^4.4.1"
+  }
+}
