@@ -3,10 +3,20 @@
   "name": "code_architect",
   "version": "1.0.0",
   "scripts": {
+    "build_slides": "marp -wI slides",
     "build_theme": "lessc .theme/style.less .theme/style.css",
     "watch": "npm-watch"
   },
   "watch": {
+    "build_slides": {
+      "patterns": [
+        "slides/**/*",
+        ".theme/**/*"
+      ],
+      "extensions": "md,css",
+      "delay": 100,
+      "inherit": true
+    },
     "build_theme": {
       "patterns": [
         ".theme/**/*"
