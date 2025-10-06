@@ -286,7 +286,7 @@ NPM を利用することで、*ネット上に公開されている様々な JS
 
 ### Homebrew
 Node.js の導入には公式サイトから DL できるインストーラーを利用してもいいのだが、
-**[Homebrew](https://brew.sh/)** を利用すれば以下のコマンドだけでインストールが完了する。
+**[Homebrew](https://brew.sh/)** を利用すれば以下のコマンドだけでインストールができる。
 
 ```sh
 % brew install node
@@ -338,4 +338,21 @@ undefined
 `undefined` は「*未定義*」という意味だ。
 
 以上を確認できたら *`.exit`* と入力して REPL モードを抜けよう。
+
+---
+
+`node` コマンドに任意の `*.js` ファイルを渡して実行させることもできる。
+
+1. `HelloP5` フォルダを VSCode で開く。（ファイル ❯ フォルダーを開く ❯ HelloP5）
+2. 新規ファイルを作成。 ( <kbd>⌘</kbd> + <kbd>N</kbd> )
+3. `console.log('Hello');` と記述。
+4. 保存 ( <kbd>⌘</kbd> + <kbd>S</kbd> ) し、ファイル名を *`test.js`* にする。
+5. ターミナルにて `cd` コマンドで `HelloP5` フォルダに移動する。
+6. `node` コマンドで `test.js` を実行する。
+
+```sh
+% node test.js
+```
+
+`Hello` と表示されれば成功だ。
 
