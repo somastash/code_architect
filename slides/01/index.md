@@ -298,3 +298,44 @@ Homebrew は macOS<small>（または Linux）</small>用の*パッケージ管�
 
 Homebrew の導入方法は[公式サイト](https://brew.sh/)に書かれている通りで問題ない。
 
+---
+
+### Node.js の動作確認
+Node.js のインストールが完了すると、*`node`* コマンドが使用可能になる。
+ターミナルで確認してみよう。
+
+```
+% node
+Welcome to Node.js vXX.XX.XX.
+Type ".help" for more information.
+>
+```
+
+大体このような表示になれば OK。
+`vXX.XX.XX` の部分はインストールされた Node.js のバージョンを示している。
+
+`>` の後に続けて JS のコードを入力すると即座に実行され、結果が出力される。
+この状態を *REPL* <small>(Read, Eval, Print, Loop)</small> モードと呼ぶ。
+REPL モードでは **`cd` や `ls` といった通常のコマンドは受け付けない**ので要注意。
+
+---
+
+試しに `console.log('Hello')` と入力してみよう。
+
+```sh
+> console.log('Hello')
+Hello
+undefined
+```
+
+すると、このように出力されるはずだ。
+**`console.log()` は引数に渡された値を文字列として出力する関数**だ。
+今後何かとお世話になる関数なので覚えておこう。
+今回は `'Hello'` という値を渡したので `Hello` と出力されたというわけだ。
+
+その下の行には関数の*返り値*（ `return` される値）が表示されるが、
+`console.log()` 関数は返り値を持たないため `undefined` と表示されている。
+`undefined` は「*未定義*」という意味だ。
+
+以上を確認できたら *`.exit`* と入力して REPL モードを抜けよう。
+
