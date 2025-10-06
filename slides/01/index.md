@@ -357,3 +357,33 @@ undefined
 `Hello` と表示されれば成功だ。
 なお REPL モードと違い、関数の返り値は表示されない。
 
+---
+
+### VSCode とターミナルの連携
+VSCode にて、
+
+1. コマンドパレットを開く。( <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> )
+2. 検索バーに "*shell*" と入力。
+3. "*Shell Command: Install 'code' command in PATH*" を選択。
+
+こうすることで *`code`* コマンドがターミナル上で使用可能になる。
+
+```sh
+% code .
+```
+
+このコマンドで**現在の作業ディレクトリを開いた状態**で VSCode を起動することができる。
+
+---
+
+また、**VSCode 上でターミナル**を使用する方法もある。
+
+1. コマンドパレットを開く。( <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> )
+2. 検索バーに "*term*" と入力。
+3. "*Terminal: Create New Terminal (In Active Workspace)*" を選択。
+
+するとウィンドウが上下に分割され、下部分がターミナルになる。
+作業ディレクトリは現在 VSCode で開いているフォルダを継承する。
+
+機能は基本的に通常のターミナルと変わらないので、好みで使い分けると良い。
+
