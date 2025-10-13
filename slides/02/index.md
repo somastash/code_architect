@@ -167,3 +167,10 @@ https://github.com/paulmillr/qr
 % curl -LO ファイルのURL
 ```
 
+---
+
+VSCode で p5.js 関数の自動補完を有効にする:
+```js
+/// <reference path="https://unpkg.com/@types/p5/global.d.ts" />
+```
+
