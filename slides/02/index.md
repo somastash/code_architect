@@ -157,8 +157,13 @@ Browsersync は以下のコマンドでインストールできる。
 
 ---
 
-https://github.com/paulmillr/qr/releases
+QR コードを扱うためのライブラリ:
+https://github.com/paulmillr/qr
 
+---
+
+ファイルのダウンロード:
 ```sh
 % curl -LO ファイルのURL
 ```
+
