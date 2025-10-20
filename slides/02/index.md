@@ -179,8 +179,20 @@ CODE_ARCHITECT の `📁 files/p5_template` フォルダをデスクトップに
 コピー後のフォルダ名は **`qrgen`** としよう。
 
 ```sh
-% cd ~/Desktop  # デスクトップに移動
-% cp -R code_architect_2025/files/p5_template qrgen  # フォルダのコピー
+% cd ~/Desktop    # デスクトップに移動
+% cp -R code_architect_2025/files/p5_template qrgen    # フォルダのコピー
+```
+
+---
+
+コピーしたプロジェクトルートには p5.js のスケッチが動く最低限のファイルが揃っている。
+VSCode を起動してファイルの内容を確認しておこう。
+またローカルサーバーも起動し、スケッチが稼働するかどうかを確認しよう。
+
+```sh
+% cd qrgen                  # プロジェクトルートに移動
+% code .                    # VSCode を起動
+% browser-sync start -sw    # ローカルサーバー (Browsersync) を起動
 ```
 
 ---
@@ -262,7 +274,7 @@ VSCode で p5.js 関数の自動補完を有効にする:
 | `<input type="color">` | <input type="color"> | 色選択 |
 | `<input type="date">` | <input type="date"> | 日付選択 |
 | `<input type="password">` | <input type="password"> | パスワード入力欄 |
-| `<input type="range">` | <input type="range"> | 範囲スライダー |
+| `<input type="range">` | <input type="range"> | スライダー |
 | `<input type="number">` | <input type="number"> | 数値入力欄 |
 
 ---
@@ -282,4 +294,26 @@ HTML タグに識別子を与えるには、次のように **`id`** 属性を�
 
 ---
 
-実際に URL 入力欄を 
+実際に URL 入力欄を作成してみよう。
+
+`📁 qrgen` 内の `index.html` をエディタで開き、`<body>` 内に以下のように書き加えてほしい。
+
+```html
+<body>
+  URL <input id="url" type="text">
+  <script src="sketch.js"></script>
+</body>
+```
+
+追加したのは `type="text"` の `<input>` タグで、識別子は `"url"` とした。
+
+ちなみに入力欄の長さは *`size` 属性*で指定することができる。
+
+```html
+<input type="text" size="40"> <!-- 約 40 文字分 -->
+```
+
+---
+
+次に、スケッチから URL 入力欄の値を取得してみよう。
+
