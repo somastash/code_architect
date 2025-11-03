@@ -43,36 +43,60 @@ Git を利用することで、例えば以下のようなことが可能にな�
 2. コマンドパレットを開く ( <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> ) 。
 3. "git init" と検索し、`Git: Initialize Repository (Git: リポジトリの初期化)` を選択・実行。
 
-<table>
-<thead>
-<tr><td>Before</td><td>After</td></tr>
-</thead>
-<tbody>
-<tr>
-<td>
+これで、このプロジェクトルート内でバージョン管理を行うことができるようになった。
+バージョン管理されている状態のフォルダを「**リポジトリ**」と呼ぶ。
+
+<hr>
+
+なお、Git リポジトリの初期化は *`git init`* コマンドでも行うことができる。
+
+```sh
+% cd プロジェクトルート
+% git init
+```
+
+---
+
+<!-- _class: small -->
+
+リポジトリの初期化を行うと *`📁 .git`* フォルダが作成される。
+`📁 .git` フォルダにはリポジトリの内部的情報が格納されているが、ユーザーがそれらに直接触れる必要は基本的にない。
+
+<div class="cols gap">
+<div>
+
+*通常のフォルダ*:
 
 ```
 📁 プロジェクトルート
 ├── index.html
 ├── style.css
-└── sketch.jsaaa
+└── sketch.js
 ```
 
-</td>
-<td>
+</div>
+<div>
+
+*Git リポジトリ*:
 
 ```
 📁 プロジェクトルート
 ├── 📁 .git
 ├── index.html
 ├── style.css
-└── sketch.jsaaa
+└── sketch.js
 ```
 
-</td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
+
+<hr>
+
+ちなみに `.git` のように名前が `.` で始まるフォルダやファイルは**隠しファイル**扱いとなり、Finder や `ls` コマンドからは表示されないので注意。`ls` コマンドで隠しファイルを表示するには `-a` というオプションを付ける必要がある。
+
+```sh
+% ls -a
+```
 
 ---
 
