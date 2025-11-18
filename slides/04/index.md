@@ -59,6 +59,6 @@ https://github.com/public-apis/public-apis?tab=readme-ov-file
 ```json
 {
   "題名": "13日の金曜日",
-  "公開": 1980,
+  "公開": 1980
 }
 ```
