@@ -52,13 +52,54 @@ https://github.com/public-apis/public-apis?tab=readme-ov-file
 ```
 
 このように、`{ }` 内に `"キー名"` と `値` のペアを `, (カンマ)` 区切りで列挙していく。
+最後の値には `,` を付けてはならない。
 `"キー名"` はオブジェクトのプロパティにあたるものだが、**`"` で括る**必要がある点に注意。
 
 ---
 
+<div class="cols c32 gap">
+<div>
+
 ```json
 {
-  "題名": "13日の金曜日",
-  "公開": 1980
+  "name": "味噌汁",
+  "calories": 35,
+  "vegan": true,
+  "ingredients": ["味噌", "豆腐", "わかめ"],
+  "howto": {
+    "time": 20,
+    "text": "豆腐とわかめを加えて軽く煮たら火を止め味噌を溶き入れて完成です。"
+  }
 }
 ```
+
+料理のレシピを JSON データで表した一例。
+
+</div>
+<div>
+
+値の型<small>（タイプ）</small> は
+
+- 文字列
+- 数値
+- 真偽値<small>（ブーリアン）</small>
+- 配列
+- オブジェクト
+
+が使用可能だ。
+
+</div>
+</div>
+
+---
+
+## 時刻と日付
+JS で時刻と日付を扱うには、**`Date` オブジェクト**を利用する。
+
+```js
+let date = new Date(); // Date オブジェクトを取得
+let year = date.getFullYear();
+```
+
+[MDN のリファレンス](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
