@@ -100,15 +100,20 @@ p5.js においては <a href="https://p5js-ja.pages.dev/reference/p5/loadJSON/"
 <p><code>loadJSON()</code> のように結果が即座に返ってこず、プログラムがそれを待たずに次の行に進んでしまうような処理のことを「<strong>非同期 <small>(Asynchronous)</small> 処理</strong>」と呼ぶ。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="press" lang="ja" data-marpit-pagination="9" style="--paginate:true;--theme:press;" data-marpit-pagination-total="10">
-<p>非同期処理を行う関数から結果を受け取るには「<em>コールバック <small>(Callback)</small></em>」という仕組みを用いる。</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;リクエスト開始。&quot;</span>);
+<p>非同期処理を行う関数から結果を受け取る方法の一つとして、<br />
+「<em>コールバック <small>(Callback)</small></em>」という仕組みが存在する。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> dog; <span class="hljs-comment">// 犬</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;リクエスト開始。&quot;</span>);
 <span class="hljs-title function_">loadJSON</span>(<span class="hljs-string">&quot;https://dog.ceo/api/breeds/image/random&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;データ取得完了。&quot;</span>);
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;データ取得完了:&quot;</span>, data);
+  dog = data; <span class="hljs-comment">// 取得データを明け渡す</span>
 });
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;データ取得中...&quot;</span>);
 </code></pre>
-<p><code>loadJSON()</code> の第 2 引数に関数を渡すと、<strong>データの取得が完了した瞬間にその関数が呼び出される</strong>。</p>
+<p><code>loadJSON()</code> の第 2 引数に関数を渡すと、<br />
+<strong>データの取得が完了した瞬間にその関数が呼び出（コールバック）される</strong>。<br />
+コールバック関数には<strong>取得したデータが引数として渡される</strong>ので、<br />
+後はそれを外部の変数に明け渡すことで自由にデータを利用することができる。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="press" lang="ja" data-marpit-pagination="10" style="--paginate:true;--theme:press;" data-marpit-pagination-total="10">
 <h2 id="%E6%99%82%E5%88%BB%E3%81%A8%E6%97%A5%E4%BB%98">時刻と日付</h2>
