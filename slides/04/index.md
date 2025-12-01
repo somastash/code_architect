@@ -93,6 +93,51 @@ https://github.com/public-apis/public-apis?tab=readme-ov-file
 
 ---
 
+## JSON の取得と非同期処理
+API を介して JSON データを取得するには複数の方法が存在するが、
+p5.js においては [`loadJSON()`](https://p5js-ja.pages.dev/reference/p5/loadJSON/) 関数を利用するのがお手軽だろう。
+
+第 1 引数に URL を渡すと API リクエストが発行され、承認されればデータが返ってくる。
+
+```js
+loadJSON("https://dog.ceo/api/breeds/image/random");
+```
+
+ここで少し厄介なのが、データの**受け取り方**だ。
+
+---
+
+`loadJSON()` を実行し、こちらがリクエストを投げてからデータが返ってくるまで、
+多かれ少なかれ*待ち時間*が発生する。
+
+問題は、アプリケーションはその間も*停止することなく動き続ける*ということだ。
+具体的には、**`loadJSON()` の結果を待たずに次の行に処理が進んでしまう**のだ。
+
+```js
+console.log("リクエスト開始。");
+loadJSON("https://dog.ceo/api/breeds/image/random");
+console.log("まだ取得できてないよ。");
+```
+
+`loadJSON()` のように結果が即座に返ってこず、プログラムがそれを待たずに次の行に進んでしまうような処理のことを「**非同期 <small>(Asynchronous)</small> 処理**」と呼ぶ。
+
+---
+
+非同期処理を行う関数から結果を受け取るには「*コールバック <small>(Callback)</small>*」という仕組みを用いる。
+
+```js
+console.log("リクエスト開始。");
+loadJSON("https://dog.ceo/api/breeds/image/random", function(data) {
+  console.log("データ取得完了。");
+  console.log(data);
+});
+console.log("データ取得中...");
+```
+
+`loadJSON()` の第 2 引数に関数を渡すと、**データの取得が完了した瞬間にその関数が呼び出される**。
+
+---
+
 ## 時刻と日付
 JS で時刻と日付を扱うには、**`Date` オブジェクト**を利用する。
 
@@ -111,7 +156,4 @@ let year = date.getFullYear();
 その他のメソッドについては [MDN のリファレンス](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Date) を参照してほしい。
 
 <small class="note">* メソッド (Method) とはオブジェクトが所有する関数のこと。</small>
-
----
-
 
