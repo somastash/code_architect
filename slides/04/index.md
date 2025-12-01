@@ -108,7 +108,7 @@ loadJSON("https://dog.ceo/api/breeds/image/random");
 ---
 
 `loadJSON()` を実行し、こちらがリクエストを投げてからデータが返ってくるまで、
-多かれ少なかれ*待ち時間*が発生する。
+多かれ少なかれ*時間差*が発生する。
 
 問題は、アプリケーションはその間も*停止することなく動き続ける*ということだ。
 具体的には、**`loadJSON()` の結果を待たずに次の行に処理が進んでしまう**のだ。
@@ -124,12 +124,12 @@ console.log("まだ取得できてないよ。");
 ---
 
 非同期処理を行う関数から結果を受け取る方法の一つとして、
-「*コールバック <small>(Callback)</small>*」という仕組みが存在する。
+「*コールバック <small>(Callback)</small>* 」という仕組みが存在する。
 
 ```js
 let dog; // 犬
 console.log("リクエスト開始。");
-loadJSON("https://dog.ceo/api/breeds/image/random", function(data) {
+loadJSON("https://dog.ceo/api/breeds/image/random", function(data) { // コールバック関数
   console.log("データ取得完了:", data);
   dog = data; // 取得データを明け渡す
 });
@@ -137,9 +137,53 @@ console.log("データ取得中...");
 ```
 
 `loadJSON()` の第 2 引数に関数を渡すと、
-**データの取得が完了した瞬間にその関数が呼び出（コールバック）される**。
+**データの取得が完了した瞬間にその関数が呼び出<small>（コールバック）</small>される**。
 コールバック関数には**取得したデータが引数として渡される**ので、
-後はそれを外部の変数に明け渡すことで自由にデータを利用することができる。
+後はそれを外部の変数に明け渡すことで自由にデータを利用することができるようになる。
+
+---
+
+コールバックを利用すれば、`loadJSON()` を含む `load*` 系の関数を
+`preload()` 関数内に留まらず、いつでも好きなタイミングで呼び出すことができる。
+
+<div class="cols gap">
+<div>
+コールバック無し:
+
+```js
+let img;
+function preload() {
+  img = loadImage("photo.jpg");
+}
+function setup() {
+  createCanvas(400, 400);
+}
+```
+
+<small class="note">画像の読み込みが終わるまで `setup()` が開始されず、その間画面は空白になってしまう。</small>
+
+</div>
+<div>
+コールバック有り:
+
+```js
+let img;
+function setup() {
+  createCanvas(400, 400);
+  loadImage("photo.jpg", function(data) {
+    // 読み込み完了
+    img = data;
+  });
+}
+function draw() {
+  if (!img) { // まだ読み込まれていない場合
+    text("画像を読み込んでいます...", 100, 100);
+  }
+}
+```
+
+</div>
+</div>
 
 ---
 
