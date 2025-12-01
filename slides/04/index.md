@@ -98,8 +98,20 @@ JS で時刻と日付を扱うには、**`Date` オブジェクト**を利用す
 
 ```js
 let date = new Date(); // Date オブジェクトを取得
+```
+
+`Date` オブジェクトの**メソッド**<rb>*</rb>を呼び出すことで、
+年, 月, 日, 時, 分, 秒などの数値を個別に取り出すことができる。
+例えば年は `getFullYear()` メソッドで取得できる。
+
+```js
 let year = date.getFullYear();
 ```
 
-[MDN のリファレンス](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+その他のメソッドについては [MDN のリファレンス](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Date) を参照してほしい。
+
+<small class="note">* メソッド (Method) とはオブジェクトが所有する関数のこと。</small>
+
+---
+
 
