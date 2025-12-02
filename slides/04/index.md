@@ -187,6 +187,56 @@ function draw() {
 
 ---
 
+## 無名関数とアロー関数
+先程からコールバック関数として使用しているのは*名前を持たない関数*で、
+「**無名関数 <small>(Anonymous Function)</small>** 」と呼ばれるものだ。書き方の違いに注意しよう。
+
+<div class="cols gap">
+<div>
+通常の関数<small>（名前有り）</small>:
+
+```js
+function hello() {
+
+}
+
+// 引数有り
+function hello(x) {
+
+}
+```
+
+</div>
+<div>
+無名関数:
+
+```js
+function() {
+  
+}
+
+// 引数有り
+function(x) {
+  
+}
+```
+
+</div>
+</div>
+
+---
+
+無名関数にはもう一つの記述法が存在する。
+<div></div>
+```js
+() => {
+  
+}
+
+```
+
+---
+
 ## 時刻と日付
 JS で時刻と日付を扱うには、**`Date` オブジェクト**を利用する。
 
