@@ -20,7 +20,6 @@ theme: press
 **API** <small>(Application Programming Interface)</small> とは、広義では異なるアプリ同士が情報 <small>(データ)</small> をやりとりするためのインターフェースのことをいう。
 特にウェブアプリやウェブサービスが外部のアプリとの連携のために公開している API のことをウェブ API と呼ぶ。
 
-
 ---
 
 ## 様々なウェブ API
@@ -35,7 +34,6 @@ Art Institute of Chicago (シカゴ美術館)
 http://api.artic.edu/
 
 https://github.com/public-apis/public-apis?tab=readme-ov-file
-
 
 ---
 
@@ -226,14 +224,75 @@ function(x) {
 
 ---
 
-無名関数にはもう一つの記述法が存在する。
-<div></div>
+無名関数にはもう一つの記法が存在する。「**アロー <small>(Arrow)</small> 関数**」と呼ばれる記法だ。
+
+<div class="cols gap">
+<div>
+
+```js
+function() {
+  
+}
+
+// 引数有り
+function(x) {
+  
+}
+```
+
+</div>
+<div>
+
 ```js
 () => {
   
 }
 
+// 引数有り
+(x) => {
+  
+}
+
+// 引数が一つの場合は () を省略可
+x => {
+  
+}
 ```
+
+</div>
+</div>
+
+左が通常の無名関数。右がアロー関数だ。`=>` を矢印に見立ててそう呼ばれている。
+アロー関数の方がタイプ数が少なくて済むため好まれる。
+
+---
+
+`loadImage()` 関数の第 2 引数に渡すコールバックにアロー関数を指定すると、右のようになる。
+
+<div class="cols gap">
+<div>
+
+```js
+loadImage("photo.jpg", function(data) {
+  // 読み込み完了
+  img = data;
+});
+```
+
+</div>
+<div>
+
+```js
+loadImage("photo.jpg", data => {
+  // 読み込み完了
+  img = data;
+});
+```
+
+</div>
+</div>
+
+結果はどちらも同じだが、アロー関数を使用したほうが短く記述できるため好ましい。
 
 ---
 
