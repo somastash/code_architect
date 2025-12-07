@@ -219,14 +219,16 @@ x =&gt; {
 <p><code>loadImage()</code> 関数の第 2 引数に渡すコールバックにアロー関数を指定すると、右のようになる。</p>
 <div class="cols gap">
 <div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-title function_">loadImage</span>(<span class="hljs-string">&quot;photo.jpg&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">                       <span class="hljs-comment">// 無名関数</span>
+<span class="hljs-title function_">loadImage</span>(<span class="hljs-string">&quot;photo.jpg&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
   <span class="hljs-comment">// 読み込み完了</span>
   img = data;
 });
 </code></pre>
 </div>
 <div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-title function_">loadImage</span>(<span class="hljs-string">&quot;photo.jpg&quot;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">                       <span class="hljs-comment">// アロー関数</span>
+<span class="hljs-title function_">loadImage</span>(<span class="hljs-string">&quot;photo.jpg&quot;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
   <span class="hljs-comment">// 読み込み完了</span>
   img = data;
 });

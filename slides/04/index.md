@@ -273,6 +273,7 @@ x => {
 <div>
 
 ```js
+                       // 無名関数
 loadImage("photo.jpg", function(data) {
   // 読み込み完了
   img = data;
@@ -283,6 +284,7 @@ loadImage("photo.jpg", function(data) {
 <div>
 
 ```js
+                       // アロー関数
 loadImage("photo.jpg", data => {
   // 読み込み完了
   img = data;
