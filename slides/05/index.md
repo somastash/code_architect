@@ -122,6 +122,10 @@ function setup() {
 
 ---
 
+<!-- _class: small -->
+
+そして以下が、フレーム毎の物理演算と物体の描画を行う例だ。
+
 ```js
 function draw() {
   background(220);
@@ -132,10 +136,19 @@ function draw() {
   // 世界に配置された全ての物体を取得（配列） 
   let bodies = Composite.allBodies(engine.world);
 
-  // 全ての物体を描画
+  // 全ての物体を描画（配列をスキャン）
   for (let i = 0; i < bodies.length; i++) {
-    let body = bodies[i];
-    drawBody(body);
+    drawBody(bodies[i]);
   }
+}
+
+// 自作関数: 引数で渡された物体を描画する
+function drawBody(body) {
+  let v = body.vertices; // 物体の頂点（配列）
+  beginShape(); // 多角形描画開始
+  for (let i = 0; i < v.length; i++) {
+    vertex(v[i].x, v[i].y);
+  }
+  endShape(CLOSE); // 多角形描画終了
 }
 ```
