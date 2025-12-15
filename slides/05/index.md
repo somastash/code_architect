@@ -82,7 +82,7 @@ let Bodies    = Matter.Bodies;
 let Composite = Matter.Composite;
 ```
 
-また、上記のコードは以下のように書き換えることができる。
+また、上記のコードは次のように書き換えることもできる。
 
 ```js
 let { Engine, Bodies, Composite } = Matter;
@@ -95,7 +95,11 @@ let { Engine, Bodies, Composite } = Matter;
 
 ---
 
-## 
+<!-- _class: small -->
+
+以下のコードは Matter.js を使用し、
+物理エンジンの初期化と物体の生成 & 配置を行う例だ。
+
 ```js
 let {Engine, Bodies, Composite} = Matter; // モジュールを変数化
 let engine; // 物理エンジン
@@ -103,14 +107,35 @@ let engine; // 物理エンジン
 function setup() {
   createCanvas(400, 400);
 
-  // 物理エンジンを初期化
+  // 物理エンジン（世界）を初期化
   engine = Engine.create();
-  // create two boxes and a ground
-  let boxA = Bodies.rectangle(150, 200, 100, 100);
-  let boxB = Bodies.rectangle(450, 50, 80, 80);
-  let ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
-  Composite.add(engine.world, [boxA, boxB, ground]);
-  console.log(boxA);
-}
 
+  // 箱を生成 (X, Y, 幅, 高さ)
+  let boxA   = Bodies.rectangle(150, 200, 120, 120); // 箱（大）
+  let boxB   = Bodies.rectangle(200,   0,  80,  80); // 箱（小） 
+  let ground = Bodies.rectangle(200, 350, 380,  50, { isStatic: true }); // 地面
+
+  // 箱を世界に配置
+  Composite.add(engine.world, [boxA, boxB, ground]);
+}
+```
+
+---
+
+```js
+function draw() {
+  background(220);
+
+  // 世界の更新（1 フレーム時間を進める）
+  Engine.update(engine, deltaTime);
+
+  // 世界に配置された全ての物体を取得（配列） 
+  let bodies = Composite.allBodies(engine.world);
+
+  // 全ての物体を描画
+  for (let i = 0; i < bodies.length; i++) {
+    let body = bodies[i];
+    drawBody(body);
+  }
+}
 ```
