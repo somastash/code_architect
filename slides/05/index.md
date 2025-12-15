@@ -41,7 +41,76 @@ p5.js のスケッチに組み込むことも容易なので、早速試して�
 `curl` コマンドを使えば簡単だ。
 
 ```sh
+% cd プロジェクトルート
 % curl -LO "https://github.com/liabru/matter-js/raw/refs/heads/master/build/matter.min.js"
 ```
 
 <small class="note">GitHub からファイルを `curl` で取得する際は *`Raw`* というボタンのリンク先の URL をコピーし、<br>ターミナルにペーストすればよい。</small>
+
+---
+
+`matter.min.js` がプロジェクトルートに配置されたことを確認したら、
+`index.html` の `<head>` タグ内に `<script>` タグを書き加えよう。
+
+```html
+<head>
+  ...
+  <script src="matter.min.js"></script>
+  ...
+</head>
+```
+
+注意点は、`sketch.js` よりも `matter.min.js` が**先に読み込まれる必要がある**ということだ。
+`<script>` タグは上から順番に読み込まれるのでタグの配置に気をつけよう。
+
+---
+
+これで準備は完了した。以降、`sketch.js` にて **`Matter`** というオブジェクトが使用可能になる。
+
+`Matter` オブジェクトは物理演算のためのいくつかの*モジュール*をプロパティとして内包している。
+アプリ開発者は自分の目的に応じたモジュールのみを取り出して使用することになる。
+
+モジュールの一覧と各使用法は[公式のドキュメント](https://brm.io/matter-js/docs/)で確認できる。
+
+---
+
+使用したい各モジュールを以下のように変数に格納するとよい。
+
+```js
+let Engine    = Matter.Engine;
+let Bodies    = Matter.Bodies;
+let Composite = Matter.Composite;
+```
+
+また、上記のコードは以下のように書き換えることができる。
+
+```js
+let { Engine, Bodies, Composite } = Matter;
+```
+
+これは「[オブジェクトの構造分解 <small>(Object Destructuring)</small>](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring) 」と呼ばれる記法だ。
+オブジェクトのプロパティを、**同名の変数に置き換える**ための短縮記法といえる。
+
+<small class="note">プログラミングにおけるこのような利便性のための短縮記法のことを概して「*糖衣構文 (Syntax Sugar)* 」と呼ぶ。</small>
+
+---
+
+## 
+```js
+let {Engine, Bodies, Composite} = Matter; // モジュールを変数化
+let engine; // 物理エンジン
+
+function setup() {
+  createCanvas(400, 400);
+
+  // 物理エンジンを初期化
+  engine = Engine.create();
+  // create two boxes and a ground
+  let boxA = Bodies.rectangle(150, 200, 100, 100);
+  let boxB = Bodies.rectangle(450, 50, 80, 80);
+  let ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+  Composite.add(engine.world, [boxA, boxB, ground]);
+  console.log(boxA);
+}
+
+```
