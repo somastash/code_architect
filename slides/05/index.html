@@ -103,9 +103,6 @@
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">draw</span>(<span class="hljs-params"></span>) {
   <span class="hljs-title function_">background</span>(<span class="hljs-number">220</span>);
 
-  <span class="hljs-comment">// 世界の更新（1 フレーム時間を進める）</span>
-  <span class="hljs-title class_">Engine</span>.<span class="hljs-title function_">update</span>(engine, deltaTime);
-
   <span class="hljs-comment">// 世界に配置された全ての物体を取得（配列） </span>
   <span class="hljs-keyword">let</span> bodies = <span class="hljs-title class_">Composite</span>.<span class="hljs-title function_">allBodies</span>(engine.<span class="hljs-property">world</span>);
 
@@ -113,6 +110,9 @@
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; bodies.<span class="hljs-property">length</span>; i++) {
     <span class="hljs-title function_">drawBody</span>(bodies[i]);
   }
+
+  <span class="hljs-comment">// 世界の更新（1 フレーム時間を進める）</span>
+  <span class="hljs-title class_">Engine</span>.<span class="hljs-title function_">update</span>(engine, deltaTime);
 }
 
 <span class="hljs-comment">// 自作関数: 引数で渡された物体を描画する</span>

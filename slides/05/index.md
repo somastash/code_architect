@@ -130,9 +130,6 @@ function setup() {
 function draw() {
   background(220);
 
-  // 世界の更新（1 フレーム時間を進める）
-  Engine.update(engine, deltaTime);
-
   // 世界に配置された全ての物体を取得（配列） 
   let bodies = Composite.allBodies(engine.world);
 
@@ -140,6 +137,9 @@ function draw() {
   for (let i = 0; i < bodies.length; i++) {
     drawBody(bodies[i]);
   }
+
+  // 世界の更新（1 フレーム時間を進める）
+  Engine.update(engine, deltaTime);
 }
 
 // 自作関数: 引数で渡された物体を描画する
